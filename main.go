@@ -38,16 +38,20 @@ func main() {
 	sandy.updateFirstName(("Cindy"))
 	sandy.print() //First name did not update - no error too
 
-	// Try to update Name with pointers
-	sandyPointer := &sandy
+	// Update Name with pointers
+	sandyPointer := &sandy //Memory of
 	sandyPointer.updateName("Cindy", "Klara")
 	sandy.print()
 
+	//Go shortcut to update person without using pointer.
+	// Hint: use the type pointer to a struct as the receiver
+	sandy.updateName("Sandeep", "Kaur")
+	sandy.print()
 }
 
 // Update the name of the person through a pointer
 func (pointerToPerson *person) updateName(newFirstName string, newLastName string) {
-	(*pointerToPerson).firstName = newFirstName
+	(*pointerToPerson).firstName = newFirstName //Value at (*) pointerToPerson
 	(*pointerToPerson).lastName = newLastName
 }
 
