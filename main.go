@@ -47,6 +47,17 @@ func main() {
 	// Hint: use the type pointer to a struct as the receiver
 	sandy.updateName("Sandeep", "Kaur")
 	sandy.print()
+
+	//Use go shortcut to update person without pointer, in func def and func body
+	arun := person{"Arun", "Jaitley", contactInfo{"a@jaitley.com", 67556}}
+	arun.print()
+	arun.updateEmail("j@arun.com")
+	arun.print()
+}
+
+// Update the email of the person through a pointer without using *
+func (pointerToPerson *person) updateEmail(email string) {
+	pointerToPerson.contact.email = email
 }
 
 // Update the name of the person through a pointer
