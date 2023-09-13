@@ -22,37 +22,37 @@ func main() {
 	sandy := person{firstName: "Sandy", lastName: "Homie", contact: contactInfo{"sandy.homie@gmail.com", 788999}}
 
 	// Print person values to the screen
-	alex.print()
-	sandy.print()
+	alex.print("Alex:")
+	sandy.print("Sandy:")
 
 	// Create person with default values
 	var priti person
-	priti.print()
-	priti.printf()
+	priti.print("Priti normal:")
+	priti.printf("Priti formatted:")
 	priti.firstName = "Priti"
 	priti.lastName = "Sharma"
 	priti.contact = contactInfo{email: "priti@sharma.com", pincode: 23099}
-	priti.printf()
+	priti.printf("Priti with contactInfo, formatted:")
 
 	//Try to update first name of sandy
 	sandy.updateFirstName(("Cindy"))
-	sandy.print() //First name did not update - no error too
+	sandy.print("Update Sandy'S first name") //First name did not update - no error too
 
 	// Update Name with pointers
 	sandyPointer := &sandy //Memory of
 	sandyPointer.updateName("Cindy", "Klara")
-	sandy.print()
+	sandy.print("Update Sandy's name with pointer:")
 
 	//Go shortcut to update person without using pointer.
 	// Hint: use the type pointer to a struct as the receiver
 	sandy.updateName("Sandeep", "Kaur")
-	sandy.print()
+	sandy.print("Update Sandy's name without passing pointer")
 
 	//Use go shortcut to update person without pointer, in func def and func body
 	arun := person{"Arun", "Jaitley", contactInfo{"a@jaitley.com", 67556}}
-	arun.print()
+	arun.print("Arun(init):")
 	arun.updateEmail("j@arun.com")
-	arun.print()
+	arun.print("Arun, udpated email without using *:")
 }
 
 // Update the email of the person through a pointer without using *
@@ -72,11 +72,11 @@ func (p person) updateFirstName(newFirstName string) {
 }
 
 // Prints the person struct directly
-func (p person) print() {
-	fmt.Println(p)
+func (p person) print(version string) {
+	fmt.Println(version, p)
 }
 
 // Prints the person struct in a given format
-func (p person) printf() {
-	fmt.Printf("%+v \n", p)
+func (p person) printf(version string) {
+	fmt.Printf("%s%+v \n", version, p)
 }
