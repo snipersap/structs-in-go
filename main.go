@@ -2,14 +2,14 @@ package main
 
 import "fmt"
 
-//Declare struct
+//Struct: Person name and contact
 type person struct {
 	firstName string
 	lastName  string
 	contact   contactInfo
 }
 
-// Declare sub struct
+// Sub struct: with email and pincode
 type contactInfo struct {
 	email   string
 	pincode int
